@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const cors = require('cors');
 require("dotenv").config();
 
 const mongoose = require('mongoose');
@@ -8,6 +9,8 @@ const Note = require('./models/Note');
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
+app.use(cors({origin:"*"}));
 
 mongoose.connect('mongodb+srv://innocentboyabhi1234:bekarpasswordHaibhai@cluster1.juycsvr.mongodb.net/notesdb').then(function () {
     app.get('/', function (req, res) {
