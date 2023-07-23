@@ -10,9 +10,10 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.use(cors({origin:"*"}));
 
 mongoose.connect('mongodb+srv://innocentboyabhi1234:bekarpasswordHaibhai@cluster1.juycsvr.mongodb.net/notesdb').then(function () {
+    app.use(cors({ origin: "*" }));
+
     app.get('/', function (req, res) {
         const response = { message: 'API Works!' };
         res.json(response);
